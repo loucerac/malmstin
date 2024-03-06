@@ -7,7 +7,13 @@ on:
       - main
 jobs:
   publish:
+    name: Upload release to PyPI
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/malmstin
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:
       - name: Check out
         uses: actions/checkout@v3
@@ -21,10 +27,8 @@ jobs:
           source .venv/bin/activate
           export PDM_BUILD_SCM_VERSION=$RELEASE_VERSION
           make build
-      - name: Publish distribution 📦 to PyPI
+      - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
   deploy-docs:
     needs: publish
     runs-on: ubuntu-latest
