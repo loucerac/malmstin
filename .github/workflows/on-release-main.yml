@@ -6,7 +6,6 @@ on:
     branches: [main]
 
 jobs:
-  
   publish:
     name: Upload release to PyPI
     runs-on: ubuntu-latest
@@ -36,7 +35,7 @@ jobs:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-  
+
   deploy-docs:
     needs: publish
     runs-on: ubuntu-latest
@@ -49,4 +48,3 @@ jobs:
 
       - name: Deploy documentation
         run: pdm run mkdocs gh-deploy --force
-  
