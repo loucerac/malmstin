@@ -18,3 +18,5 @@ Install the environment and the pre-commit hooks with
 ```bash
 make install
 ```
+
+## Develop
