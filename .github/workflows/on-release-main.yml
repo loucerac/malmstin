@@ -10,22 +10,15 @@ jobs:
     name: Upload release to PyPI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - name: Setup PDM
-        uses: pdm-project/setup-pdm@v3
-        with:
-          prerelease: false
-          enable-pep582: false
-          allow-python-prereleases: false
+      - name: Check out
+        uses: actions/checkout@v3
+      - name: Set up the environment
+        uses: ./.github/actions/setup-pdm-env
       - name: Export tag
         id: vars
         run: echo tag=${GITHUB_REF#refs/*/} >> $GITHUB_OUTPUT
       - name: Build and publish
-        run: >-
+        run:
           PDM_BUILD_SCM_VERSION=${{ steps.vars.outputs.tag }} pdm build
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
