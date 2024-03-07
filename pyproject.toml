@@ -19,21 +19,17 @@ keywords = ['python']
 [tool.pdm.version]
 source = "scm"
 
-[project.urls]
-Homepage = "https://loucerac.github.io/malmstin/"
-Repository = "https://github.com/loucerac/malmstin"
-Documentation = "https://loucerac.github.io/malmstin/"
-
 [tool.pdm.dev-dependencies]
 test = [
   "pytest>=7.2.0",
   "pytest-cov>=4.0.0"
   ]
 dev = [
-"deptry>=0.6.4",
-"mypy>=0.981",
-  "pre-commit>=2.20.0",
-  "tox>=3.25.1"
+    "deptry>=0.6.4",
+    "mypy>=0.981",
+    "pre-commit>=2.20.0",
+    "tox>=3.25.1",
+    "ipykernel>=6.29.3",
 ]
 docs = [
   "mkdocs>=1.4.2",
@@ -45,6 +41,12 @@ docs = [
 excludes = ["./**/.git"]
 package-dir = "."
 includes = ["malmstin"]
+
+
+[project.urls]
+Homepage = "https://loucerac.github.io/malmstin/"
+Repository = "https://github.com/loucerac/malmstin"
+Documentation = "https://loucerac.github.io/malmstin/"
 
 [build-system]
 requires = ["pdm-backend"]

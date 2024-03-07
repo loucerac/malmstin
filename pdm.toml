@@ -1,0 +1,9 @@
+[venv]
+in_project = true
+
+[install]
+cache = true
+
+[python]
+use_venv = true
+providers = ["rye"]
