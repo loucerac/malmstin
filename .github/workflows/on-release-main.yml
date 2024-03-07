@@ -18,7 +18,7 @@ jobs:
         id: vars
         run: echo tag=${GITHUB_REF#refs/*/} >> $GITHUB_OUTPUT
       - name: Build and publish
-        run: |
+        run: >-
           source .venv/bin/activate
           export PDM_BUILD_SCM_VERSION=$RELEASE_VERSION
           make build
